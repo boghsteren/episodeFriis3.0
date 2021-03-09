@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { Icon, Image, Menu, Search, Transition } from "semantic-ui-react";
+import { Icon, Image, Menu, Transition } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { SearchBar } from "./components/SearchBar";
 

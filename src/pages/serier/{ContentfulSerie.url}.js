@@ -1,17 +1,10 @@
 import { graphql } from "gatsby";
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import {
-  Divider,
-  Header,
-  Image,
-  Item,
-  Label,
-  Segment,
-} from "semantic-ui-react";
+import { Header, Item, Label } from "semantic-ui-react";
 import { Layout } from "../../Layout";
 
-const SeriesPage = ({ params, data }) => {
+const SeriesPage = ({ data }) => {
   const { contentfulSerie } = data;
   const {
     cover,
@@ -23,6 +16,11 @@ const SeriesPage = ({ params, data }) => {
   } = contentfulSerie;
   return (
     <React.Fragment>
+      <title>{titel}</title>
+      <meta
+        name="description"
+        content={`${blurb.blurb} Læs mere hos episodeFriis.`}
+      />
       <Layout>
         <Item.Group>
           <Item>

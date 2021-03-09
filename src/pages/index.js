@@ -8,7 +8,8 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <main>
-        <title>Home Page</title>
+        <title>episodeFriis</title>
+        <meta name="description" content="En side om serier" />{" "}
         <div>Forside</div>
         <Item.Group>
           {allContentfulSerie.nodes.map((item) => (
@@ -16,6 +17,7 @@ const IndexPage = ({ data }) => {
               <Item.Image size="small" src={item.cover.file.url}></Item.Image>
               <Item.Content>
                 <Item.Header>{item.titel}</Item.Header>
+                <Item.Meta>{item.blurb.blurb}</Item.Meta>
               </Item.Content>
             </Item>
           ))}
@@ -36,6 +38,9 @@ export const query = graphql`
         }
         titel
         url
+        blurb {
+          blurb
+        }
       }
     }
   }
