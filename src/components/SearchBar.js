@@ -34,7 +34,7 @@ export const SearchBar = () => {
         onSearchChange={(e, data) => {
           updateTerm(data.value);
         }}
-        onResultSelect={(e, { result }) => navigate(`/serier/${result.url}`)}
+        onResultSelect={(e, { result }) => navigate(`/serie/${result.url}`)}
         results={results?.map((item) => {
           return {
             title: item.titel,

@@ -1,0 +1,24 @@
+.front_page_slider {
+  height: 600px;
+}
+@media only screen and (max-width: 600px) {
+  .front_page_slider {
+    height: 200px;
+  }
+}
+.serie_liste {
+  justify-content: space-between;
+}
+@media only screen and (max-width: 600px) {
+  .serie_liste {
+    justify-content: center;
+  }
+}
+.post_page_image {
+  min-height: 900px;
+}
+@media only screen and (max-width: 600px) {
+  .post_page_image {
+    min-height: 250px;
+  }
+}

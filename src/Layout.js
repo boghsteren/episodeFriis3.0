@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { Icon, Image, Menu, Transition } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import "antd/dist/antd.css";
 import { SearchBar } from "./components/SearchBar";
 
 export const Layout = ({ children }) => (
@@ -30,7 +31,9 @@ export const Layout = ({ children }) => (
       </Menu.Item>
     </Menu>
     <Transition transitionOnMount>
-      <div style={{ marginTop: "56px" }}>{children}</div>
+      <div style={{ marginTop: "60px", backgroundColor: "#f0f0f0" }}>
+        {children}
+      </div>
     </Transition>
   </div>
 );
