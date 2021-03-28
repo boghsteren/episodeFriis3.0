@@ -26,17 +26,14 @@ const Serier = ({ data }) => {
             display: "flex",
             flexWrap: "wrap",
             padding: "25px",
-            width: "100%",
+            justifyContent: "center",
           }}
         >
           {serier.map((item) => (
-            <Link
-              style={{ width: "100%", marginBottom: "20px" }}
-              key={item.url}
-              to={`/${type}/${item.url}`}
-            >
+            <Link key={item.url} to={`/${type}/${item.url}`}>
               <Card
                 hoverable
+                className="serie_card"
                 actions={item.kategori?.map((item) => (
                   <Link to={`/serier?genre=${item.kategori}`}>
                     {item.kategori}
@@ -56,7 +53,9 @@ const Serier = ({ data }) => {
               >
                 <Card.Meta
                   title={item.titel}
-                  description={item.blurb.blurb}
+                  description={
+                    <div style={{ height: "50px" }}>{item.blurb?.blurb}</div>
+                  }
                 ></Card.Meta>
               </Card>
             </Link>

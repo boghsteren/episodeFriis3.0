@@ -16,11 +16,12 @@
   }
 }
 .serie_card {
-  width: 350px;
+  width: 400px;
+  margin: 10px;
 }
 @media only screen and (max-width: 600px) {
   .serie_card {
-    width: 100%;
+    width: 90vw;
   }
 }
 .post_page_image {

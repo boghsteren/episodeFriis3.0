@@ -25,14 +25,14 @@ const Posts = ({ data }) => {
             display: "flex",
             flexWrap: "wrap",
             margin: "25px",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
           {items.map((item) => (
             <Link key={item.url} to={`/${type}/${item.url}`}>
               <Card
                 hoverable
-                style={{ margin: "10px", width: "400px" }}
+                className="serie_card"
                 cover={
                   <div
                     style={{
@@ -46,7 +46,9 @@ const Posts = ({ data }) => {
               >
                 <Card.Meta
                   title={item.titel}
-                  description={item.blurb.blurb}
+                  description={
+                    <div style={{ height: "65px" }}>{item.blurb?.blurb}</div>
+                  }
                 ></Card.Meta>
               </Card>
             </Link>

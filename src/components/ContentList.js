@@ -28,7 +28,7 @@ export const ContentList = ({ type, titel, items }) => {
             <Card.Meta
               title={item.titel}
               description={
-                <div style={{ height: "70px" }}>{item.blurb?.blurb}</div>
+                <div style={{ height: "65px" }}>{item.blurb?.blurb}</div>
               }
             ></Card.Meta>
           </Card>

@@ -151,7 +151,7 @@ const PostPage = ({ data }) => {
                             )
                           }
                           description={
-                            <div style={{ height: "70px" }}>
+                            <div style={{ height: "65px" }}>
                               {item.blurb?.blurb}
                             </div>
                           }
