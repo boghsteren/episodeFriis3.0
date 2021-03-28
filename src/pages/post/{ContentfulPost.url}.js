@@ -1,9 +1,15 @@
-import { Breadcrumb, Card, Col, Row, Typography } from "antd";
+import { Breadcrumb, Card, Col, Row, Tooltip, Typography } from "antd";
 import Title from "antd/lib/typography/Title";
 import { graphql, Link } from "gatsby";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout";
+import {
+  BookOutlined,
+  BookTwoTone,
+  PlaySquareOutlined,
+  PlaySquareTwoTone,
+} from "@ant-design/icons";
 
 const PostPage = ({ data }) => {
   const { contentfulPost } = data;
@@ -92,45 +98,71 @@ const PostPage = ({ data }) => {
               </Card>
             </Col>
           </Row>
-          <Row>
-            <Col
-              className="serie_liste"
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                margin: "25px",
-              }}
-            >
-              {liste?.map((item) => (
-                <Link
-                  key={item.url}
-                  to={`/${
-                    item.internal.type === "ContentfulPost" ? "post" : "serie"
-                  }/${item.url}`}
+          {liste && (
+            <Row>
+              <Col
+                className="serie_liste"
+                style={{
+                  margin: "25px",
+                }}
+              >
+                <Title>Relateret indhold</Title>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
+                  }}
                 >
-                  <Card
-                    hoverable
-                    style={{ margin: "10px", width: "400px" }}
-                    cover={
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "200px",
-                          backgroundImage: `url(${item.cover?.file.url})`,
-                          backgroundSize: "cover",
-                        }}
-                      ></div>
-                    }
-                  >
-                    <Card.Meta
-                      title={item.titel}
-                      description={item.blurb?.blurb}
-                    ></Card.Meta>
-                  </Card>
-                </Link>
-              ))}
-            </Col>
-          </Row>
+                  {liste.map((item) => (
+                    <Link
+                      key={item.url}
+                      to={`/${
+                        item.internal.type === "ContentfulPost"
+                          ? "post"
+                          : "serie"
+                      }/${item.url}`}
+                    >
+                      <Card
+                        hoverable
+                        style={{ margin: "10px", width: "400px" }}
+                        cover={
+                          <div
+                            style={{
+                              width: "100%",
+                              height: "200px",
+                              backgroundImage: `url(${item.cover?.file.url})`,
+                              backgroundSize: "cover",
+                            }}
+                          ></div>
+                        }
+                      >
+                        <Card.Meta
+                          title={item.titel}
+                          avatar={
+                            item.internal.type === "ContentfulPost" ? (
+                              <Tooltip title="Post" mouseEnterDelay={0.03}>
+                                <BookOutlined></BookOutlined>
+                              </Tooltip>
+                            ) : (
+                              <Tooltip title="Serie" mouseEnterDelay={0.03}>
+                                <PlaySquareOutlined />
+                              </Tooltip>
+                            )
+                          }
+                          description={
+                            <div style={{ height: "70px" }}>
+                              {item.blurb?.blurb}
+                            </div>
+                          }
+                        ></Card.Meta>
+                      </Card>
+                    </Link>
+                  ))}
+                </div>
+              </Col>
+            </Row>
+          )}
         </div>
       </Layout>
     </React.Fragment>

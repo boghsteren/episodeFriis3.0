@@ -8,10 +8,19 @@
 }
 .serie_liste {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 @media only screen and (max-width: 600px) {
   .serie_liste {
     justify-content: center;
+  }
+}
+.serie_card {
+  width: 350px;
+}
+@media only screen and (max-width: 600px) {
+  .serie_card {
+    width: 100%;
   }
 }
 .post_page_image {

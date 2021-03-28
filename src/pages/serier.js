@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, Link } from "gatsby";
 import { Layout } from "../Layout";
-import { Card, Divider, Image } from "antd";
+import { Card, Divider, Image, Space } from "antd";
 import Title from "antd/lib/typography/Title";
 
 const Serier = ({ data }) => {
@@ -25,11 +25,16 @@ const Serier = ({ data }) => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            margin: "25px",
+            padding: "25px",
+            width: "100%",
           }}
         >
           {serier.map((item) => (
-            <Link key={item.url} to={`/${type}/${item.url}`}>
+            <Link
+              style={{ width: "100%", marginBottom: "20px" }}
+              key={item.url}
+              to={`/${type}/${item.url}`}
+            >
               <Card
                 hoverable
                 actions={item.kategori?.map((item) => (
@@ -37,7 +42,7 @@ const Serier = ({ data }) => {
                     {item.kategori}
                   </Link>
                 ))}
-                style={{ margin: "10px", width: "400px" }}
+                className="serie_card"
                 cover={
                   <div
                     style={{

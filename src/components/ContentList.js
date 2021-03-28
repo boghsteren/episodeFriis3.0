@@ -14,11 +14,22 @@ export const ContentList = ({ type, titel, items }) => {
           <Card
             hoverable
             style={{ margin: "25px" }}
-            cover={<Image preview={false} src={item.cover.file.url}></Image>}
+            cover={
+              <div
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  backgroundImage: `url(${item.cover?.file.url})`,
+                  backgroundSize: "cover",
+                }}
+              ></div>
+            }
           >
             <Card.Meta
               title={item.titel}
-              description={item.blurb.blurb}
+              description={
+                <div style={{ height: "70px" }}>{item.blurb?.blurb}</div>
+              }
             ></Card.Meta>
           </Card>
         </Link>
