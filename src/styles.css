@@ -32,3 +32,17 @@
     min-height: 250px;
   }
 }
+.mobile-only {
+  display: none;
+}
+.hide-on-mobile {
+  display: block;
+}
+@media only screen and (max-width: 600px) {
+  .mobile-only {
+    display: block;
+  }
+  .hide-on-mobile {
+    display: none;
+  }
+}

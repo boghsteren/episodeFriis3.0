@@ -4,12 +4,7 @@ import { graphql, Link } from "gatsby";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout";
-import {
-  BookOutlined,
-  BookTwoTone,
-  PlaySquareOutlined,
-  PlaySquareTwoTone,
-} from "@ant-design/icons";
+import { BookOutlined, PlaySquareOutlined } from "@ant-design/icons";
 
 const PostPage = ({ data }) => {
   const { contentfulPost } = data;

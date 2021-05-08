@@ -9,15 +9,17 @@ export const Layout = ({ children }) => (
   <div>
     <Menu fixed="top" borderless>
       <Menu.Item link as={Link} to="/">
-        EpisodeFriis
+        <Icon name="home" />
+
+        <span className="hide-on-mobile">EpisodeFriis</span>
       </Menu.Item>
       <Menu.Item link as={Link} to="/posts">
         <Icon name="newspaper" />
-        Posts
+        <span className="hide-on-mobile">Posts</span>
       </Menu.Item>
       <Menu.Item link as={Link} to="/serier">
         <Icon name="tv" />
-        Serier
+        <span className="hide-on-mobile">Serier</span>
       </Menu.Item>
       <Menu.Item>
         <SearchBar></SearchBar>
@@ -27,7 +29,7 @@ export const Layout = ({ children }) => (
           src="https://images.ctfassets.net/qqmq4jsguzi3/6DYE8VjNPa2uaaqUswEog6/0db08e1e665fbf70440b12ce967bd395/friis.jpg"
           avatar
         />
-        Friis
+        <span className="hide-on-mobile">Friis</span>
       </Menu.Item>
     </Menu>
     <Transition transitionOnMount>
