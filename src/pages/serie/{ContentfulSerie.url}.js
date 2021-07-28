@@ -37,7 +37,7 @@ const SeriesPage = ({ data }) => {
       <Layout>
         <div>
           <Row>
-            <Col md={16} xl={12} span={24}>
+            <Col md={16} xl={14} xxl={12} span={24}>
               <div
                 style={{
                   width: "100%",
@@ -52,7 +52,8 @@ const SeriesPage = ({ data }) => {
 
             <Col
               md={8}
-              xl={12}
+              xl={10}
+              xxl={12}
               span={24}
               style={{ padding: "25px", backgroundColor: "#d9d9d9" }}
             >
