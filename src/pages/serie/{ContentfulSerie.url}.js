@@ -41,7 +41,8 @@ const SeriesPage = ({ data }) => {
               <div
                 style={{
                   width: "100%",
-                  height: "80vh",
+                  height: "100%",
+                  minHeight: "80vh",
                   backgroundImage: `url(${cover.file.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
