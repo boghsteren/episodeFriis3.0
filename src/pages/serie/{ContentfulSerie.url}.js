@@ -37,13 +37,12 @@ const SeriesPage = ({ data }) => {
       <Layout>
         <div>
           <Row>
-            <Col md={16} span={24}>
+            <Col md={16} xl={12} span={24}>
               <div
                 style={{
                   width: "100%",
                   height: "100%",
                   minHeight: "250px",
-                  maxWidth: "1000px",
                   backgroundImage: `url(${cover.file.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -53,6 +52,7 @@ const SeriesPage = ({ data }) => {
 
             <Col
               md={8}
+              xl={12}
               span={24}
               style={{ padding: "25px", backgroundColor: "#d9d9d9" }}
             >
