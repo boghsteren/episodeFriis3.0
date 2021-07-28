@@ -43,6 +43,7 @@ const SeriesPage = ({ data }) => {
                   width: "100%",
                   height: "100%",
                   minHeight: "250px",
+                  maxWidth: "1000px",
                   backgroundImage: `url(${cover.file.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
