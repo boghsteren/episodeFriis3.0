@@ -52,8 +52,8 @@ const SeriesPage = ({ data }) => {
             <Col
               md={12}
               xl={8}
-              xxl={8}
-              span={6}
+              xxl={6}
+              span={24}
               style={{ padding: "25px", backgroundColor: "#d9d9d9" }}
             >
               <Card
