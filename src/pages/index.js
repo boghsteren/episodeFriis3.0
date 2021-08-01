@@ -5,6 +5,8 @@ import { Carousel, Col, Row } from "antd";
 import { ContentList } from "../components/ContentList";
 import Title from "antd/lib/typography/Title";
 import "../styles.css";
+import { useMediaQuery } from "@react-hook/media-query";
+import { ContentCarousel } from "../components/ContentCarrousel";
 
 const IndexPage = ({ data }) => {
   const { allContentfulSerie, allContentfulPost } = data;
@@ -13,7 +15,7 @@ const IndexPage = ({ data }) => {
 
   const first_five = serier.slice(0, 5);
   const first_five_posts = posts.slice(0, 5);
-
+  const matches = useMediaQuery("only screen and (max-width: 480px)");
   return (
     <Layout>
       <main>
@@ -26,11 +28,14 @@ const IndexPage = ({ data }) => {
                 <div
                   className="front_page_slider"
                   style={{
-                    backgroundImage: `url(${item.cover.file.url})`,
+                    backgroundImage: matches
+                      ? `url(${item.cover.file.url}?fit=thumb&w=400&h=700&f=face)`
+                      : `url(${item.cover.file.url})`,
                     backgroundSize: "cover",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    height: "80vh",
                   }}
                 >
                   <Title
@@ -48,28 +53,24 @@ const IndexPage = ({ data }) => {
             </div>
           ))}
         </Carousel>
+        <ContentCarousel
+          items={first_five_posts}
+          titel="Nyeste posts"
+          type="post"
+        ></ContentCarousel>
         <Row>
-          <Col md={8} span={24}>
-            <ContentList
-              items={first_five_posts}
-              titel="Nyeste posts"
-              type="post"
-            ></ContentList>
-          </Col>
-          <Col md={8} span={24}>
-            <ContentList
-              items={first_five}
-              titel="Nyeste serier"
-              type="serie"
-            ></ContentList>
-          </Col>
-          <Col md={8} span={0}>
-            <ContentList
-              items={first_five}
-              titel="Nyeste serier"
-              type="serie"
-            ></ContentList>
-          </Col>
+          <ContentList
+            items={first_five}
+            titel="Seneste tilføjede serier"
+            type="serie"
+          ></ContentList>
+        </Row>
+        <Row>
+          <ContentList
+            items={first_five}
+            titel="Nyeste serier"
+            type="serie"
+          ></ContentList>
         </Row>
       </main>
     </Layout>
@@ -103,6 +104,9 @@ export const query = graphql`
         url
         blurb {
           blurb
+        }
+        tekstOverListe {
+          tekstOverListe
         }
       }
     }

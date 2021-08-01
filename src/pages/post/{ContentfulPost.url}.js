@@ -9,7 +9,6 @@ import { BookOutlined, PlaySquareOutlined } from "@ant-design/icons";
 const PostPage = ({ data }) => {
   const { contentfulPost } = data;
   const { cover, blurb, url, titel, tekstOverListe, liste } = contentfulPost;
-  console.log(liste);
   return (
     <React.Fragment>
       <title>{titel} | episodeFriis</title>
