@@ -21,7 +21,7 @@ const IndexPage = ({ data }) => {
         <meta name="description" content="En side om serier" />
         <Carousel autoplay>
           {first_five.map((item) => (
-            <div>
+            <div key={item.url}>
               <Link to={`/serie/${item.url}`}>
                 <div
                   className="front_page_slider"

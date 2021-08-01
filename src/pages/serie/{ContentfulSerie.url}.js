@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const SeriesPage = ({ data }) => {
   const { contentfulSerie } = data;
@@ -16,6 +17,7 @@ const SeriesPage = ({ data }) => {
     udbyder,
     kategori,
   } = contentfulSerie;
+  const matches = useMediaQuery("only screen and (max-width: 480px)");
   return (
     <React.Fragment>
       <title>{titel} | episodeFriis</title>
@@ -42,8 +44,10 @@ const SeriesPage = ({ data }) => {
                 style={{
                   width: "100%",
                   height: "100%",
-                  minHeight: "80vh",
-                  backgroundImage: `url(${cover.file.url})`,
+                  minHeight: matches ? "100vw" : "70vh",
+                  backgroundImage: matches
+                    ? `url(${cover.file.url}?fit=thumb&w=1200&h=1200&f=face)`
+                    : `url(${cover.file.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

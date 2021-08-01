@@ -1,5 +1,4 @@
 import { Card } from "antd";
-import Title from "antd/lib/typography/Title";
 import { Link } from "gatsby";
 import React from "react";
 
@@ -14,9 +13,6 @@ export const SmallContentList = ({ type, items }) => {
             style={{
               backgroundColor: type === "post" ? "GhostWhite" : "white",
             }}
-            actions={item.kategori?.map((item) => (
-              <Link to={`/serier?genre=${item.kategori}`}>{item.kategori}</Link>
-            ))}
             cover={
               <div
                 style={{

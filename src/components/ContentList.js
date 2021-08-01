@@ -10,7 +10,7 @@ export const ContentList = ({ type, titel, items }) => {
         {titel}
       </Title>
       {items.map((item) => (
-        <Link to={`/${type}/${item.url}`}>
+        <Link key={item.url} to={`/${type}/${item.url}`}>
           <Card
             hoverable
             style={{ margin: "25px" }}
