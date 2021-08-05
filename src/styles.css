@@ -27,14 +27,7 @@
     width: 90vw;
   }
 }
-.post_page_image {
-  min-height: 900px;
-}
-@media only screen and (max-width: 600px) {
-  .post_page_image {
-    min-height: 250px;
-  }
-}
+
 .mobile-only {
   display: none;
 }

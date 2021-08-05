@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import { Icon, Image, Menu, Transition } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css";
-import { SearchBar } from "./components/SearchBar";
 
 export const Layout = ({ children }) => (
   <div>

@@ -1,4 +1,3 @@
-import { useMediaQuery } from "@react-hook/media-query";
 import { Card, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Link } from "gatsby";

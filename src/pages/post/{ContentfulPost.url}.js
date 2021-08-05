@@ -5,10 +5,14 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout";
 import { BookOutlined, PlaySquareOutlined } from "@ant-design/icons";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const PostPage = ({ data }) => {
   const { contentfulPost } = data;
   const { cover, blurb, url, titel, tekstOverListe, liste } = contentfulPost;
+  const small = useMediaQuery("only screen and (max-width: 425px)");
+  const medium = useMediaQuery("only screen and (max-width: 1024px)");
+
   return (
     <React.Fragment>
       <title>{titel} | episodeFriis</title>
@@ -33,33 +37,13 @@ const PostPage = ({ data }) => {
             <Col span={24}>
               <div
                 style={{
-                  position: "absolute",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  height: "100%",
-                  width: "100%",
-                }}
-              >
-                <Title
-                  style={{
-                    fontSize: "50px",
-                    textAlign: "center",
-                    color: "white",
-                    textShadow: "1px 4px black",
-                  }}
-                >
-                  {titel}
-                </Title>
-              </div>
-              <div
-                className="post_page_image"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(${cover.file.url})`,
+                  height: "100vh",
+                  backgroundImage: small
+                    ? `url(${cover.file.url}?fit=thumb&w=1200&h=1200&f=face)`
+                    : medium
+                    ? `url(${cover.file.url}?fit=thumb&w=600&h=1200&f=face)`
+                    : `url(${cover.file.url})`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center top",
                 }}
               ></div>
             </Col>
@@ -69,7 +53,7 @@ const PostPage = ({ data }) => {
               style={{ padding: "25px", backgroundColor: "#d9d9d9" }}
             >
               <Card
-                style={{ marginTop: "-60px" }}
+                style={{ marginTop: "-250px" }}
                 title={
                   <Breadcrumb>
                     <Breadcrumb.Item>

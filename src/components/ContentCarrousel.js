@@ -1,35 +1,40 @@
-import { Button, Card, Carousel } from "antd";
+import { Card, Carousel } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Link } from "gatsby";
-import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import React from "react";
 import Text from "antd/lib/typography/Text";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const PrevArrow = ({ className, style, onClick }) => (
-  <LeftCircleFilled
-    className={className}
-    style={{ ...style, display: "block", color: "grey", fontSize: "30px" }}
-    onClick={onClick}
-  ></LeftCircleFilled>
-);
-
-const NextArrow = ({ className, style, onClick }) => (
-  <RightCircleFilled
+  <LeftOutlined
     className={className}
     style={{
       ...style,
       display: "block",
       color: "grey",
-      fontSize: "30px",
-      right: "-15px",
+      fontSize: "40px",
     }}
     onClick={onClick}
-  ></RightCircleFilled>
+  ></LeftOutlined>
+);
+
+const NextArrow = ({ className, style, onClick }) => (
+  <RightOutlined
+    className={className}
+    style={{
+      ...style,
+      display: "block",
+      color: "grey",
+      fontSize: "40px",
+      right: "-5px",
+    }}
+    onClick={onClick}
+  ></RightOutlined>
 );
 
 export const ContentCarousel = ({ type, titel, items }) => {
-  const small = useMediaQuery("only screen and (max-width: 425px)");
+  const large = useMediaQuery("only screen and (min-width: 425px)");
   return (
     <React.Fragment>
       <Title style={{ margin: "25px", marginBottom: "0px" }} level={3}>
@@ -37,14 +42,15 @@ export const ContentCarousel = ({ type, titel, items }) => {
       </Title>
       <div
         style={{
-          paddingLeft: !small && "40px",
-          paddingRight: !small && "40px",
+          paddingLeft: large && "40px",
+          paddingRight: large && "40px",
         }}
       >
         <Carousel
-          arrows={!small}
-          prevArrow={<PrevArrow></PrevArrow>}
-          nextArrow={<NextArrow />}
+          arrows={large}
+          centerMode={!large}
+          prevArrow={<PrevArrow large={large} />}
+          nextArrow={<NextArrow large={large} />}
           slidesToShow={type === "post" ? 4 : 5}
           slidesToScroll={type === "post" ? 4 : 5}
           draggable
@@ -95,11 +101,16 @@ export const ContentCarousel = ({ type, titel, items }) => {
           ]}
         >
           {items.map((item) => (
-            <Link key={item.url} to={`/${type}/${item.url}`}>
+            <Link
+              key={item.url}
+              to={`/${
+                item.internal.type === "ContentfulPost" ? "post" : "serie"
+              }/${item.url}`}
+            >
               <Card
                 style={{
                   height: type === "post" ? "450px" : "320px",
-                  margin: "20px",
+                  margin: large ? "20px" : "5px",
                 }}
                 title={type === "post" ? `${item.titel}` : false}
                 hoverable

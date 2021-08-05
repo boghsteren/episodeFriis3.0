@@ -1,8 +1,7 @@
 import { graphql, Link } from "gatsby";
 import * as React from "react";
 import { Layout } from "../Layout";
-import { Carousel, Col, Row } from "antd";
-import { ContentList } from "../components/ContentList";
+import { Carousel, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import "../styles.css";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -30,7 +29,7 @@ const IndexPage = ({ data }) => {
                     className="slider-container"
                     style={{
                       backgroundImage: matches
-                        ? `url(${item.cover.file.url}?fit=thumb&w=400&h=700&f=face)`
+                        ? `url(${item.cover.file.url}?fit=thumb&w=400&h=700&f=faces)`
                         : `url(${item.cover.file.url})`,
                       backgroundSize: "cover",
                       display: "flex",
@@ -84,6 +83,9 @@ export const query = graphql`
         }
         titel
         url
+        internal {
+          type
+        }
         blurb {
           blurb
         }
@@ -98,6 +100,9 @@ export const query = graphql`
         }
         titel
         url
+        internal {
+          type
+        }
         blurb {
           blurb
         }
