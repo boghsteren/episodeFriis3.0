@@ -21,57 +21,53 @@ const IndexPage = ({ data }) => {
       <main>
         <title>episodeFriis</title>
         <meta name="description" content="En side om serier" />
-        <Carousel autoplay>
-          {first_five.map((item) => (
-            <div key={item.url}>
-              <Link to={`/serie/${item.url}`}>
-                <div
-                  className="front_page_slider"
-                  style={{
-                    backgroundImage: matches
-                      ? `url(${item.cover.file.url}?fit=thumb&w=400&h=700&f=face)`
-                      : `url(${item.cover.file.url})`,
-                    backgroundSize: "cover",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "80vh",
-                  }}
-                >
-                  <Title
+        <div>
+          <Carousel autoplay>
+            {first_five.map((item) => (
+              <div key={item.url}>
+                <Link to={`/serie/${item.url}`}>
+                  <div
+                    className="slider-container"
                     style={{
-                      fontSize: "60px",
-                      textAlign: "center",
-                      color: "white",
-                      textShadow: "2px 3px black",
+                      backgroundImage: matches
+                        ? `url(${item.cover.file.url}?fit=thumb&w=400&h=700&f=face)`
+                        : `url(${item.cover.file.url})`,
+                      backgroundSize: "cover",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "80vh",
                     }}
                   >
-                    {item.titel}
-                  </Title>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </Carousel>
+                    <Title
+                      style={{
+                        fontSize: matches ? "40px" : "60px",
+                        padding: "15px",
+                        textAlign: "center",
+                        color: "white",
+                        textShadow: "2px 3px black",
+                      }}
+                    >
+                      {item.titel}
+                    </Title>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </Carousel>
+        </div>
         <ContentCarousel
           items={first_five_posts}
           titel="Nyeste posts"
           type="post"
         ></ContentCarousel>
-        <Row>
-          <ContentList
-            items={first_five}
-            titel="Seneste tilføjede serier"
-            type="serie"
-          ></ContentList>
-        </Row>
-        <Row>
-          <ContentList
-            items={first_five}
-            titel="Nyeste serier"
-            type="serie"
-          ></ContentList>
-        </Row>
+        <ContentCarousel
+          items={first_five}
+          titel="Senest tilføjede serier"
+          type="serie"
+        ></ContentCarousel>
+        <Row></Row>
+        <Row></Row>
       </main>
     </Layout>
   );

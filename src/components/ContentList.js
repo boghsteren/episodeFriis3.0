@@ -1,10 +1,8 @@
-import { Card, Typography, Row } from "antd";
-import Paragraph from "antd/lib/skeleton/Paragraph";
-import Text from "antd/lib/typography/Text";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Card, Row } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Link } from "gatsby";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 
 export const ContentList = ({ type, titel, items }) => {
   return (

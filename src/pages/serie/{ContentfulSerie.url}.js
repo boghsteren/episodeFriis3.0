@@ -17,7 +17,9 @@ const SeriesPage = ({ data }) => {
     udbyder,
     kategori,
   } = contentfulSerie;
-  const matches = useMediaQuery("only screen and (max-width: 480px)");
+  const small = useMediaQuery("only screen and (max-width: 425px)");
+  const medium = useMediaQuery("only screen and (max-width: 1024px)");
+
   return (
     <React.Fragment>
       <title>{titel} | episodeFriis</title>
@@ -39,14 +41,16 @@ const SeriesPage = ({ data }) => {
       <Layout>
         <div>
           <Row>
-            <Col md={12} xl={16} xxl={18} span={24}>
+            <Col md={10} xl={14} xxl={16} span={24}>
               <div
                 style={{
                   width: "100%",
                   height: "100%",
-                  minHeight: matches ? "100vw" : "70vh",
-                  backgroundImage: matches
+                  minHeight: small ? "100vw" : "70vh",
+                  backgroundImage: small
                     ? `url(${cover.file.url}?fit=thumb&w=1200&h=1200&f=face)`
+                    : medium
+                    ? `url(${cover.file.url}?fit=thumb&w=600&h=1200&f=face)`
                     : `url(${cover.file.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -55,9 +59,9 @@ const SeriesPage = ({ data }) => {
             </Col>
 
             <Col
-              md={12}
-              xl={8}
-              xxl={6}
+              md={14}
+              xl={10}
+              xxl={8}
               span={24}
               style={{ padding: "25px", backgroundColor: "#d9d9d9" }}
             >

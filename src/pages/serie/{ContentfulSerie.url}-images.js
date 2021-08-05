@@ -38,7 +38,7 @@ const SeriesPage = ({ data }) => {
               cover={
                 <img
                   alt={foci}
-                  src={`${cover.file.url}?fit=thumb&w=1200&h=1200&f=${foci}`}
+                  src={`${cover.file.url}?fit=thumb&w=240&h=240&f=${foci}`}
                 ></img>
               }
             >
@@ -62,22 +62,10 @@ const SeriesPage = ({ data }) => {
 export const query = graphql`
   query($id: String) {
     contentfulSerie(id: { eq: $id }) {
-      titel
-      url
-      udbyder
-      blurb {
-        blurb
-      }
       cover {
         file {
           url
         }
-      }
-      beskrivelse {
-        beskrivelse
-      }
-      kategori {
-        kategori
       }
     }
   }

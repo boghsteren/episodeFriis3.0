@@ -21,9 +21,7 @@ export const Layout = ({ children }) => (
         <Icon name="tv" />
         <span className="hide-on-mobile">Serier</span>
       </Menu.Item>
-      <Menu.Item>
-        <SearchBar></SearchBar>
-      </Menu.Item>
+
       <Menu.Item position={"right"}>
         <Image
           src="https://images.ctfassets.net/qqmq4jsguzi3/6DYE8VjNPa2uaaqUswEog6/0db08e1e665fbf70440b12ce967bd395/friis.jpg"
@@ -33,7 +31,7 @@ export const Layout = ({ children }) => (
       </Menu.Item>
     </Menu>
     <Transition transitionOnMount>
-      <div style={{ marginTop: "60px", backgroundColor: "#f0f0f0" }}>
+      <div style={{ marginTop: "55px", backgroundColor: "#f0f0f0" }}>
         {children}
       </div>
     </Transition>
