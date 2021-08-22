@@ -54,6 +54,7 @@ export const ContentCarousel = ({ type, titel, items }) => {
           slidesToShow={type === "post" ? 4 : 5}
           slidesToScroll={type === "post" ? 4 : 5}
           draggable
+          infinite={false}
           dots={false}
           responsive={[
             {
