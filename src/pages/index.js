@@ -2,22 +2,19 @@ import { graphql, Link } from "gatsby";
 import * as React from "react";
 import { Layout } from "../Layout";
 import { Row } from "antd";
-import Title from "antd/lib/typography/Title";
 import "../styles.css";
-import { useMediaQuery } from "@react-hook/media-query";
 import { ContentCarousel } from "../components/ContentCarrousel";
-import { getImage, GatsbyImage, withArtDirection } from "gatsby-plugin-image";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const IndexPage = ({ data }) => {
   const { allContentfulSerie, allContentfulPost, highlightContentful } = data;
+  const is_small_screen = useMediaQuery("only screen and (max-width: 800px)");
   const serier = allContentfulSerie.nodes;
   const posts = allContentfulPost.nodes;
-  const hightlight = highlightContentful.nodes[1];
-  const topImage = withArtDirection(getImage(hightlight.cover), []);
-
+  const hero = highlightContentful.nodes[2];
+  const topImage = hero.cover.file.url;
   const first_five = serier.slice(0, 5);
   const first_five_posts = posts.slice(0, 5);
-  const matches = useMediaQuery("only screen and (max-width: 480px)");
   return (
     <Layout>
       <main>
@@ -26,32 +23,24 @@ const IndexPage = ({ data }) => {
         <div style={{ position: "relative" }}>
           <Link
             to={`/${
-              hightlight.internal.type === "ContentfulPost" ? "post" : "serie"
-            }/${hightlight.url}`}
+              hero.internal.type === "ContentfulPost" ? "post" : "serie"
+            }/${hero.url}`}
           >
-            <GatsbyImage image={topImage} alt={hightlight.blurb} />
-            <div
-              style={{
-                top: 0,
-                position: "absolute",
-                height: "100%",
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Title
+            <div>
+              <div
                 style={{
-                  fontSize: matches ? "20px" : "60px",
-                  padding: "15px",
-                  textAlign: "center",
-                  color: "white",
-                  textShadow: "2px 3px black",
+                  display: "flex",
+                  height: "80vh",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundImage: is_small_screen
+                    ? `url(${topImage}?w=600&h=400&fit=fill&f=face)`
+                    : `url(${topImage}?fit=fill&f=face)`,
+                  backgroundSize: "cover",
                 }}
               >
-                {hightlight.titel}
-              </Title>
+                <div className="title hero-title">{hero.titel}</div>
+              </div>
             </div>
           </Link>
         </div>
@@ -76,11 +65,17 @@ const IndexPage = ({ data }) => {
 export const query = graphql`
   query MyQuery {
     highlightContentful: allContentfulPost(
+      limit: 3
       sort: { fields: createdAt, order: DESC }
     ) {
       nodes {
         cover {
-          gatsbyImageData(layout: FULL_WIDTH)
+          file {
+            url
+          }
+        }
+        mobile: cover {
+          gatsbyImageData(aspectRatio: 0.5, layout: FULL_WIDTH, quality: 100)
         }
         titel
         url

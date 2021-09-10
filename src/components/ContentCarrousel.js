@@ -1,9 +1,7 @@
 import { Card, Carousel } from "antd";
-import Title from "antd/lib/typography/Title";
 import { Link } from "gatsby";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import React from "react";
-import Text from "antd/lib/typography/Text";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const PrevArrow = ({ className, style, onClick }) => (
@@ -37,9 +35,9 @@ export const ContentCarousel = ({ type, titel, items }) => {
   const large = useMediaQuery("only screen and (min-width: 425px)");
   return (
     <React.Fragment>
-      <Title style={{ margin: "25px", marginBottom: "0px" }} level={3}>
+      <div style={{ margin: "25px", marginBottom: "0px" }} className="title">
         {titel}
-      </Title>
+      </div>
       <div
         style={{
           paddingLeft: large && "40px",
@@ -60,22 +58,22 @@ export const ContentCarousel = ({ type, titel, items }) => {
             {
               breakpoint: 2500,
               settings: {
-                slidesToShow: type === "post" ? 4 : 5,
-                slidesToScroll: type === "post" ? 4 : 5,
+                slidesToShow: type === "post" ? 3 : 5,
+                slidesToScroll: type === "post" ? 3 : 5,
               },
             },
             {
               breakpoint: 1440,
               settings: {
-                slidesToShow: type === "post" ? 3 : 4,
-                slidesToScroll: type === "post" ? 3 : 4,
+                slidesToShow: type === "post" ? 2 : 4,
+                slidesToScroll: type === "post" ? 2 : 4,
               },
             },
             {
               breakpoint: 1024,
               settings: {
-                slidesToShow: type === "post" ? 2 : 3,
-                slidesToScroll: type === "post" ? 2 : 3,
+                slidesToShow: type === "post" ? 1 : 3,
+                slidesToScroll: type === "post" ? 1 : 3,
               },
             },
             {
@@ -110,27 +108,24 @@ export const ContentCarousel = ({ type, titel, items }) => {
             >
               <Card
                 style={{
-                  height: type === "post" ? "450px" : "320px",
                   margin: large ? "20px" : "5px",
+                  backgroundColor: "#111111",
+                  border: "none",
                 }}
-                title={type === "post" ? `${item.titel}` : false}
                 hoverable
                 cover={
                   <div
                     style={{
                       width: "100%",
-                      height: type === "post" ? "300px" : "200px",
+                      height: type === "post" ? "400px" : "200px",
                       backgroundImage: `url(${item.cover?.file.url})`,
                       backgroundSize: "cover",
                     }}
                   ></div>
                 }
               >
-                <Card.Meta
-                  title={type === "post" ? null : `${item.titel}`}
-                  description={type !== "post" && item.blurb?.blurb}
-                ></Card.Meta>
-                {type === "post" && <Text>{item.blurb?.blurb}</Text>}
+                <div className="title-text">{item.titel}</div>
+                <div className="blurb">{item.blurb?.blurb}</div>
               </Card>
             </Link>
           ))}
