@@ -2,7 +2,6 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../Layout";
 import { Divider } from "antd";
-import Title from "antd/lib/typography/Title";
 import { SmallContentList } from "../components/SmallContentList";
 
 const Serier = ({ data }) => {
@@ -12,14 +11,15 @@ const Serier = ({ data }) => {
       <main>
         <title>Home Page</title>
         <Divider></Divider>
-        <Title
+        <div
+          className="title"
           style={{
             margin: "25px",
             textAlign: "center",
           }}
         >
           Serier
-        </Title>
+        </div>
         <div
           style={{
             display: "flex",
@@ -32,6 +32,7 @@ const Serier = ({ data }) => {
             items={serier}
             type="serie"
             title="Serier"
+            width="400px"
           ></SmallContentList>
         </div>
       </main>
@@ -51,6 +52,9 @@ export const query = graphql`
         titel
         kategori {
           kategori
+        }
+        internal {
+          type
         }
         url
         blurb {

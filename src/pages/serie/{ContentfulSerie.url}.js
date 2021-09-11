@@ -2,7 +2,6 @@ import { Breadcrumb, Card, Col, Row, Typography } from "antd";
 import Title from "antd/lib/typography/Title";
 import { graphql, Link } from "gatsby";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import { Layout } from "../../Layout";
 import { useMediaQuery } from "@react-hook/media-query";
 
@@ -88,9 +87,7 @@ const SeriesPage = ({ data }) => {
                 <Typography.Paragraph strong>
                   {blurb.blurb}
                 </Typography.Paragraph>
-                <Typography.Paragraph>
-                  <ReactMarkdown>{beskrivelse.beskrivelse}</ReactMarkdown>
-                </Typography.Paragraph>
+                <Typography.Paragraph></Typography.Paragraph>
               </Card>
             </Col>
           </Row>

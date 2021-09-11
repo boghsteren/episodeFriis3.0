@@ -3,6 +3,7 @@ import * as React from "react";
 import { Layout } from "../Layout";
 import { Row } from "antd";
 import "../styles.css";
+import "../normalize.css";
 import { ContentCarousel } from "../components/ContentCarrousel";
 import { useMediaQuery } from "@react-hook/media-query";
 
@@ -11,10 +12,10 @@ const IndexPage = ({ data }) => {
   const is_small_screen = useMediaQuery("only screen and (max-width: 800px)");
   const serier = allContentfulSerie.nodes;
   const posts = allContentfulPost.nodes;
-  const hero = highlightContentful.nodes[2];
+  const hero = highlightContentful.nodes[0];
   const topImage = hero.cover.file.url;
-  const first_five = serier.slice(0, 5);
-  const first_five_posts = posts.slice(0, 5);
+  const first_five = serier;
+  const first_five_posts = posts;
   return (
     <Layout>
       <main>
@@ -22,6 +23,7 @@ const IndexPage = ({ data }) => {
         <meta name="description" content="En side om serier" />
         <div style={{ position: "relative" }}>
           <Link
+            style={{ textDecoration: "none" }}
             to={`/${
               hero.internal.type === "ContentfulPost" ? "post" : "serie"
             }/${hero.url}`}
@@ -73,9 +75,6 @@ export const query = graphql`
           file {
             url
           }
-        }
-        mobile: cover {
-          gatsbyImageData(aspectRatio: 0.5, layout: FULL_WIDTH, quality: 100)
         }
         titel
         url

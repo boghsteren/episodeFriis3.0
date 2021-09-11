@@ -1,8 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../Layout";
 import { Divider } from "antd";
-import Title from "antd/lib/typography/Title";
 import { SmallContentList } from "../components/SmallContentList";
 
 const Posts = ({ data }) => {
@@ -10,16 +9,17 @@ const Posts = ({ data }) => {
   return (
     <Layout>
       <main>
-        <title>Posts</title>
+        <title>Home Page</title>
         <Divider></Divider>
-        <Title
+        <div
+          className="title"
           style={{
             margin: "25px",
             textAlign: "center",
           }}
         >
           Posts
-        </Title>
+        </div>
         <div
           style={{
             display: "flex",
@@ -32,6 +32,7 @@ const Posts = ({ data }) => {
             items={items}
             type="post"
             title="Posts"
+            width="550px"
           ></SmallContentList>
         </div>
       </main>
@@ -50,6 +51,9 @@ export const query = graphql`
         }
         titel
         url
+        internal {
+          type
+        }
         blurb {
           blurb
         }
