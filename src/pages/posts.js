@@ -1,16 +1,16 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Layout } from "../Layout";
-import { Divider } from "antd";
 import { SmallContentList } from "../components/SmallContentList";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const Posts = ({ data }) => {
   const items = data.allContentfulPost.nodes;
+  const small = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <Layout>
       <main>
         <title>Home Page</title>
-        <Divider></Divider>
         <div
           className="title"
           style={{
@@ -24,7 +24,7 @@ const Posts = ({ data }) => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            margin: "25px",
+            margin: small ? "10px" : "25px",
             justifyContent: "center",
           }}
         >
@@ -32,7 +32,7 @@ const Posts = ({ data }) => {
             items={items}
             type="post"
             title="Posts"
-            width="550px"
+            width={small ? "100%" : "600px"}
           ></SmallContentList>
         </div>
       </main>

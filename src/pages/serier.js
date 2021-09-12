@@ -3,9 +3,11 @@ import { graphql } from "gatsby";
 import { Layout } from "../Layout";
 import { Divider } from "antd";
 import { SmallContentList } from "../components/SmallContentList";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const Serier = ({ data }) => {
   const serier = data.allContentfulSerie.nodes;
+  const small = useMediaQuery("only screen and (max-width: 768px)");
   return (
     <Layout>
       <main>
@@ -24,7 +26,7 @@ const Serier = ({ data }) => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            margin: "25px",
+            margin: small ? "10px" : "25px",
             justifyContent: "center",
           }}
         >
@@ -32,7 +34,7 @@ const Serier = ({ data }) => {
             items={serier}
             type="serie"
             title="Serier"
-            width="400px"
+            width={small ? "100%" : "400px"}
           ></SmallContentList>
         </div>
       </main>

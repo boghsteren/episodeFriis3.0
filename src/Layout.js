@@ -25,7 +25,7 @@ export const Layout = ({ children }) => (
     >
       <div>
         <Link to="/" className="menu-link">
-          Forside
+          Hjem
         </Link>
       </div>
       <div>
@@ -40,7 +40,7 @@ export const Layout = ({ children }) => (
       </div>
       <div>
         <Link to="/friis" className="menu-link">
-          Friis
+          Mig
         </Link>
       </div>
     </div>

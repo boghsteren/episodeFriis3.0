@@ -8,7 +8,7 @@ body {
   color: lightgrey;
   font-size: 18px;
   font-family: "Prompt", sans-serif;
-  margin: 24px;
+  margin: 14px;
 }
 .menu-link:hover {
   color: white;
@@ -24,15 +24,6 @@ body {
   width: 50vw;
   text-shadow: 3px 5px 6px black;
 }
-@media only screen and (max-width: 600px) {
-  .title {
-    font-size: 36px;
-  }
-  .hero-title {
-    width: 80vw;
-  }
-}
-
 .title-text {
   font-family: "Prompt", sans-serif;
   font-size: 24px;
@@ -47,6 +38,20 @@ body {
   font-weight: 300;
   color: lightgrey;
   margin-top: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 28px;
+  }
+  .hero-title {
+    width: 80vw;
+  }
+  .title-text {
+    font-size: 20px;
+  }
+  .blurb {
+    font-size: 12px;
+  }
 }
 
 .serie_liste {

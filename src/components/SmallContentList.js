@@ -5,7 +5,7 @@ export const SmallContentList = ({ items, width }) => {
   return (
     <React.Fragment>
       {items.map((item) => (
-        <div style={{ width: width ?? "500px" }}>
+        <div key={item.url} style={{ width: width ?? "500px" }}>
           <ContentCard item={item}></ContentCard>
         </div>
       ))}

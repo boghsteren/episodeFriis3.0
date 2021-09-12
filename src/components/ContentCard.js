@@ -1,15 +1,14 @@
+import { useMediaQuery } from "@react-hook/media-query";
 import { Link } from "gatsby";
 import React from "react";
 
-export const ContentCard = ({ item, width }) => {
+export const ContentCard = ({ item }) => {
   const { internal, url, cover, titel, blurb } = item;
   const { type } = internal;
+  const large = useMediaQuery("only screen and (min-width: 425px)");
   return (
-    <Link
-      key={url}
-      to={`/${type === "ContentfulPost" ? "post" : "serie"}/${url}`}
-    >
-      <div style={{ margin: "24px" }}>
+    <Link to={`/${type === "ContentfulPost" ? "post" : "serie"}/${url}`}>
+      <div style={{ margin: large ? "24px" : "5px" }}>
         <div
           style={{
             height: type === "ContentfulPost" ? "300px" : "200px",

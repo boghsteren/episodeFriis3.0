@@ -18,8 +18,10 @@ export const ContentCarousel = ({ type, titel, items }) => {
       >
         <Slider
           centerMode={!large}
-          slidesToShow={type === "post" ? 4 : 5}
-          slidesToScroll={type === "post" ? 4 : 5}
+          arrows={large}
+          centerPadding="25px"
+          slidesToShow={1}
+          slidesToScroll={1}
           draggable
           infinite={false}
           dots={false}
@@ -69,7 +71,7 @@ export const ContentCarousel = ({ type, titel, items }) => {
           ]}
         >
           {items.map((item) => (
-            <ContentCard item={item}></ContentCard>
+            <ContentCard key={item.url} item={item}></ContentCard>
           ))}
         </Slider>
       </div>
